@@ -4,6 +4,7 @@ import axios from 'axios';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 import moment from 'moment';
+import StripeCheckout from 'react-stripe-checkout';
 
 function Bookingscreen() {
   const { roomid, fromdate, todate } = useParams();
@@ -70,6 +71,10 @@ function Bookingscreen() {
     }
   }
 
+  function onToken(token) {
+    console.log(token)
+  }
+
   return (
     <div className='m-1'>
       {loading ? (
@@ -109,6 +114,12 @@ function Bookingscreen() {
                 {!bookingSuccess ? (
                   <div>
                     <button className='btn btn-primary' onClick={bookRoom}>Pay Now</button>
+                    <StripeCheckout
+                    amount={totalamount * 100}
+                    token={onToken}
+                    currency='#'
+                    stripeKey="pk_test_51OJxwmJ3ABvGEruwTv18iXkfmO6mhEpaBVYlcBYs9E3jgSYL6NhoXFzANmiBJcxPAPdVWXWp7Exf4hBWVcHOaJUO00BLh2nGFs"
+                    />
                   </div>
                 ) : (
                   <div className="alert alert-success mt-3" role="alert">
