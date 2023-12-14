@@ -1,7 +1,9 @@
 const express = require("express");
 const bookingRoute = require('./routes/bookingsRoute');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 // Set up Content Security Policy middleware for local development
 app.use((req, res, next) => {
