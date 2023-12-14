@@ -1,4 +1,4 @@
-const express =const express = require("express");
+const express = require("express");
 const bookingRoute = require('./routes/bookingsRoute');
 
 const app = express();
