@@ -7,8 +7,8 @@ const app = express();
 app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', `
     default-src 'self';
-    script-src 'self' http://localhost:3000 'unsafe-inline';  // Adjust the port if needed
-    style-src 'self' http://localhost:3000 'unsafe-inline';   // Adjust the port if needed
+    script-src 'self' http://localhost:3000;  // Adjust the port if needed
+    style-src 'self' http://localhost:3000;   // Adjust the port if needed
     font-src 'self' data: https://cdnjs.cloudflare.com;
     img-src 'self' data: http://localhost:3000;
     manifest-src 'self';
