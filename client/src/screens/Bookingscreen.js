@@ -117,7 +117,7 @@ function Bookingscreen() {
                     <StripeCheckout
                     amount={totalamount * 100}
                     token={onToken}
-                    currency='#'
+                    currency='USD'
                     stripeKey="pk_test_51OJxwmJ3ABvGEruwTv18iXkfmO6mhEpaBVYlcBYs9E3jgSYL6NhoXFzANmiBJcxPAPdVWXWp7Exf4hBWVcHOaJUO00BLh2nGFs"
                     />
                   </div>
