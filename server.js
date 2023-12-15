@@ -6,8 +6,23 @@ const app = express();
 app.use(cors());
 
 // Set up Content Security Policy middleware for local development
-app.use((req, res, next) => {
-  res.setHeader('Content-Security-Policy', "default-src 'self';");
+aapp.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', `
+    default-src * data: mediastream: blob: filesystem: about: ws: wss: 'unsafe-eval' 'wasm-unsafe-eval' 'unsafe-inline'; 
+    script-src * data: blob: 'unsafe-inline' 'unsafe-eval'; 
+    connect-src * data: blob: 'unsafe-inline'; 
+    img-src * data: blob: 'unsafe-inline'; 
+    frame-src * data: blob: ; 
+    style-src * data: blob: 'unsafe-inline';
+    font-src * data: blob: 'unsafe-inline';
+    frame-ancestors * data: blob: 'unsafe-inline';
+  `);
+
+  // Additional headers for security
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'deny');
+  res.setHeader('Referrer-Policy', 'no-referrer');
+
   next();
 });
 
