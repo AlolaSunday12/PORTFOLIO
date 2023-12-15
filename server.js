@@ -16,7 +16,7 @@ app.use((req, res, next) => {
     style-src * data: blob: 'unsafe-inline';
     font-src * data: blob: 'unsafe-inline';
     frame-ancestors * data: blob: 'unsafe-inline';
-  `);
+  `.replace(/\n/g, '').replace(/\s{2,}/g, ' ')); // Remove newlines and extra spaces
 
   // Additional headers for security
   res.setHeader('X-Content-Type-Options', 'nosniff');
