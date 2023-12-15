@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 
 // Set up Content Security Policy middleware for local development
-aapp.use((req, res, next) => {
+app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', `
     default-src * data: mediastream: blob: filesystem: about: ws: wss: 'unsafe-eval' 'wasm-unsafe-eval' 'unsafe-inline'; 
     script-src * data: blob: 'unsafe-inline' 'unsafe-eval'; 
