@@ -31,9 +31,10 @@
     <meta http-equiv="Content-Security-Policy" content="
   default-src 'none';
   script-src 'self' http://localhost:5001;  // Adjust the port if needed
-  style-src 'self' https://cdn.jsdelivr.net http://localhost:5001;   // Adjust the port if needed
-  font-src 'self' data: https://cdnjs.cloudflare.com;
+  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net http://localhost:5001 https://fonts.googleapis.com;
+  font-src 'self' data: https://cdnjs.cloudflare.com https://fonts.gstatic.com;  // Include Google Fonts domain
   img-src 'self' data: http://localhost:5001;
+  connect-src http://localhost:5001;  // Adjust the port if needed
 ">
 
     <title>Hotel Reservation Sytem - Dev</title>
