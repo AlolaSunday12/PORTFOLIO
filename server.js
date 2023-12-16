@@ -1,6 +1,7 @@
 const express = require("express");
 const bookingRoute = require('./routes/bookingsRoute');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -34,13 +35,17 @@ app.use(`/api/rooms`, roomsRoute);
 app.use('/api/users', usersRoute);
 app.use('/api/bookings', bookingRoute);
 
-app.get('/', (req, res) => {
-  res.redirect('/home'); // Assuming your home page route is '/home'
-});
+// Serve static files from the "build" folder
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Define a route handler for the home page
 app.get('/home', (req, res) => {
-  res.send('Welcome to the home page!'); // Replace this with your actual home page content
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+// Redirect root to the home page
+app.get('/', (req, res) => {
+  res.redirect('/home');
 });
 
 const port = process.env.PORT || 5001;
