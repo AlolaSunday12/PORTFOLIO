@@ -34,6 +34,10 @@ app.use(`/api/rooms`, roomsRoute);
 app.use('/api/users', usersRoute);
 app.use('/api/bookings', bookingRoute);
 
+app.get('/', (req, res) => {
+  res.redirect('/landing'); // Assuming your landing page route is '/landing'
+});
+
 const port = process.env.PORT || 5001;
 
 app.listen(port, () => console.log('node server started using nodemon'));
