@@ -5,6 +5,7 @@ const path = require('path');
 
 const app = express();
 app.use(cors());
+app.use(express.static(path.join(__dirname, "build")));
 
 // Set up Content Security Policy middleware for local development
 app.use((req, res, next) => {
@@ -35,17 +36,8 @@ app.use(`/api/rooms`, roomsRoute);
 app.use('/api/users', usersRoute);
 app.use('/api/bookings', bookingRoute);
 
-// Serve static files from the "build" folder
-app.use(express.static(path.join(__dirname, 'build')));
-
-// Define a route handler for the home page
-app.get('/home', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-// Redirect root to the home page
-app.get('/', (req, res) => {
-  res.redirect('/home');
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 const port = process.env.PORT || 5001;
