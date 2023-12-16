@@ -11,10 +11,10 @@ app.use((req, res, next) => {
     default-src * data: mediastream: blob: filesystem: about: ws: wss: 'unsafe-eval' 'wasm-unsafe-eval' 'unsafe-inline'; 
     script-src * data: blob: 'unsafe-inline' 'unsafe-eval'; 
     connect-src * data: blob: 'unsafe-inline'; 
-    img-src * data: blob: 'unsafe-inline'; 
+    img-src * data: blob: 'unsafe-inline' https://fonts.googleapis.com; 
     frame-src * data: blob: ; 
-    style-src * data: blob: 'unsafe-inline';
-    font-src * data: blob: 'unsafe-inline';
+    style-src * data: blob: 'unsafe-inline' https://fonts.googleapis.com;
+    font-src * data: blob: 'unsafe-inline' https://fonts.googleapis.com;
     frame-ancestors * data: blob: 'unsafe-inline';
   `.replace(/\n/g, '').replace(/\s{2,}/g, ' ')); // Remove newlines and extra spaces
 
