@@ -6,6 +6,7 @@ const app = express();
 app.use(cors());
 
 // Set up Content Security Policy middleware for local development
+app.use((req, res, next) => {
 res.setHeader('Content-Security-Policy', `
   default-src 'self' https://fonts.googleapis.com; 
   script-src 'self' https://fonts.googleapis.com 'unsafe-inline' 'unsafe-eval'; 
