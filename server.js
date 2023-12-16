@@ -6,17 +6,16 @@ const app = express();
 app.use(cors());
 
 // Set up Content Security Policy middleware for local development
-app.use((req, res, next) => {
-  res.setHeader('Content-Security-Policy', `
-    default-src * data: mediastream: blob: filesystem: about: ws: wss: 'unsafe-eval' 'wasm-unsafe-eval' 'unsafe-inline'; 
-    script-src * data: blob: 'unsafe-inline' 'unsafe-eval'; 
-    connect-src * data: blob: 'unsafe-inline'; 
-    img-src * data: blob: 'unsafe-inline' https://fonts.googleapis.com; 
-    frame-src * data: blob: ; 
-    style-src * data: blob: 'unsafe-inline' https://fonts.googleapis.com;
-    font-src * data: blob: 'unsafe-inline' https://fonts.googleapis.com;
-    frame-ancestors * data: blob: 'unsafe-inline';
-  `.replace(/\n/g, '').replace(/\s{2,}/g, ' ')); // Remove newlines and extra spaces
+res.setHeader('Content-Security-Policy', `
+  default-src 'self' https://fonts.googleapis.com; 
+  script-src 'self' https://fonts.googleapis.com 'unsafe-inline' 'unsafe-eval'; 
+  connect-src 'self'; 
+  img-src 'self' https://fonts.googleapis.com; 
+  frame-src 'self'; 
+  style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+  font-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+  frame-ancestors 'self';
+`.replace(/\n/g, '').replace(/\s{2,}/g, ' '));
 
   // Additional headers for security
   res.setHeader('X-Content-Type-Options', 'nosniff');
