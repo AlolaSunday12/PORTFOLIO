@@ -35,7 +35,12 @@ app.use('/api/users', usersRoute);
 app.use('/api/bookings', bookingRoute);
 
 app.get('/', (req, res) => {
-  res.redirect('/landing'); // Assuming your landing page route is '/landing'
+  res.redirect('/home'); // Assuming your home page route is '/home'
+});
+
+// Define a route handler for the home page
+app.get('/home', (req, res) => {
+  res.send('Welcome to the home page!'); // Replace this with your actual home page content
 });
 
 const port = process.env.PORT || 5001;
