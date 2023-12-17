@@ -2,12 +2,14 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js", // Changed the main entry point to server.js
   "scripts": {
-    "start": "cd client && npm start",
+    "start": "node server.js", // Changed from "npm start" to run the server directly
+    "client": "cd client && npm start", // Added a script for starting the client
     "build": "cd client && npm run build",
-    "server": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "npm install --prefix client && npm run build" // Added script for Heroku post-build step
   },
   "author": "",
   "license": "ISC",
@@ -39,5 +41,16 @@
         }
       }
     ]
-  }
+  },
+  "engines": {
+    "node": "14.x", // Specify the version of Node.js
+    "npm": "6.x"    // Specify the version of npm
+  },
+  "directories": {
+    "client": "client" // Specify the client directory
+  },
+  "scripts": {
+    "heroku-postbuild": "cd client && npm install && npm run build" // Adjusted Heroku post-build script
+  },
+  "cacheDirectories": ["client/node_modules"] // Cache the client node_modules to speed up builds
 }
