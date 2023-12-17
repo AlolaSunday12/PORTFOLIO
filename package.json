@@ -2,14 +2,14 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js", // Changed the main entry point to server.js
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js", // Changed from "npm start" to run the server directly
-    "client": "cd client && npm start", // Added a script for starting the client
+    "start": "node server.js",
+    "client": "cd client && npm start",
     "build": "cd client && npm run build",
     "server": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install --prefix client && npm run build" // Added script for Heroku post-build step
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "eslint-plugin-jest": "^27.6.0",
-    "helmet": "^4.6.0"
+    "helmet": "^4.6.0",
+    "nodemon": "^3.0.1"
   },
   "eslintConfig": {
     "extends": [
@@ -43,14 +44,11 @@
     ]
   },
   "engines": {
-    "node": "14.x", // Specify the version of Node.js
-    "npm": "6.x"    // Specify the version of npm
+    "node": "14.x",
+    "npm": "6.x"
   },
   "directories": {
-    "client": "client" // Specify the client directory
+    "client": "client"
   },
-  "scripts": {
-    "heroku-postbuild": "cd client && npm install && npm run build" // Adjusted Heroku post-build script
-  },
-  "cacheDirectories": ["client/node_modules"] // Cache the client node_modules to speed up builds
+  "cacheDirectories": ["client/node_modules"]
 }
