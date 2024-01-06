@@ -46,8 +46,8 @@
     ]
   },
   "engines": {
-    "node": "14.x.x",
-    "npm": "6.x.x"
+    "node": "14.x",
+    "npm": "6.x"
   },
   "directories": {
     "client": "client"
