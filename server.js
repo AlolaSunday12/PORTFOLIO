@@ -4,8 +4,8 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-app.use(cors());
 app.use(express.static(path.join(__dirname, "build")));
+app.use(cors());
 
 // Set up Content Security Policy middleware for local development
 app.use((req, res, next) => {
